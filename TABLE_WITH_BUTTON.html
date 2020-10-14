@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLE_WITH_BUTTON</title>
+     <style>
+        table{
+            border:20px solid blue;
+            border-collapse:collapse;
+         }
+
+        td {
+        border: 3px solid blue
+         }
+
+         th{
+         border:3px solid blue;
+         }
+
+        h1{
+        position: absolute;
+        left:5px;
+        top:150px;
+        }
+
+    </style>
+    <script>
+                /*
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector('button').onclick = function() {
+                document.querySelector('table').style.color = 'red';
+            };
+            document.querySelector('button').onclick = function() {
+                document.querySelector('table').style.color = 'green';
+            };
+            document.querySelector('button').onclick = function() {
+                document.querySelector('table').style.color = 'blue';
+            };
+        });
+        */
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('button').forEach(function(button) {
+                button.onclick = function() {
+                    document.querySelector('table').style.color = button.dataset.color
+                 };
+            });
+
+            document.querySelector('select').onchange = function() {
+                document.querySelector('table').style.color = this.value;
+
+            };
+        });
+
+    </script>
+</head>
+<body>
+<h1>
+    <button data-color="red" data-size="20px" id="red">Red</button>
+    <button data-color="green" data-size="20px" id="green">Green</button>
+    <button data-color="blue" data-size="20px" id="blue">Blue</button>
+
+    <select>
+        <option data-width="1px">1px</option>
+        <option data-width="2px">2px</option>
+        <option data-width="3px">3px</option>
+    </select>
+</h1>
+
+<table>
+        <thead>
+            <tr>
+                <th > Invoice nº </th>
+                <th > Lawfirm </th>
+                <th > Amount </th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr >
+                <td >100</td>
+                <td >EY</td>
+                <td >20.000</td>
+            </tr>
+            <tr >
+                <td >101</td>
+                <td >PWC</td>
+                <td >15.000</td>
+            </tr>
+            </tbody>
+
+    </table>
+
+</body>
+</html>
