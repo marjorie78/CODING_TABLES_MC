@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TABLE_WITH_BUTTON</title>
+     <style>
+        table{
+            border:2px solid blue;
+            border-collapse:collapse;
+         }
+        thead, tbody, tr, td, th {
+        border: inherit
+         }
+
+        h1{
+        position: absolute;
+        left:5px;
+        top:150px;
+        }
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            document.querySelector('form').onkeyup = function() {
+                if (document.querySelector('#text').value.length > 0) {
+                    document.querySelector('#submit').disabled = false;
+                } else {
+                    document.querySelector('#submit').disabled = true;
+                }
+            };
+            document.querySelector('form').onsubmit = function() {
+                let task = document.querySelector('#text').value;
+                console.log(task);
+                let li = document.createElement('li')
+                li.innerHTML = task;
+                document.querySelector('ol').append(li);
+                //document.querySelector('ol').insertBefore(li, document.querySelector('ol').children[0]);
+                document.querySelector('#text').value = "";
+                document.querySelector('#submit').disabled = true;
+                return false;
+            };
+        });
+    </script>
+</head>
+<body>
+<h1>
+
+    <form>
+
+    <input type="text" id="invoice" placeholder="Enter invoice" autofocus>
+        <input type="text" id="lawfirm" placeholder="Enter lawfirm" autofocus>
+         <input type="text" id="position" placeholder="Enter price" autofocus>
+        <input type="submit" value="add to invoice">
+        <input type="submit" value=" add to lawfirm">
+        <input type="submit" value=" add to price">
+
+
+    </form>
+
+</h1>
+
+<table>
+        <thead>
+            <tr>
+                <th > invoice </th>
+                <th > lawfirm </th>
+                <th > price </th>
+            </tr>
+        </thead>
+            <tbody>
+            <tr >
+                <td >100</td>
+                <td >EY</td>
+                <td >20.000</td>
+            </tr>
+            <tr >
+                <td >101</td>
+                <td >PWC</td>
+                <td >15.000</td>
+            </tr>
+            </tbody>
+
+    </table>
+
+</body>
+
+</html>

@@ -6,16 +6,12 @@
     <title>TABLE_WITH_BUTTON</title>
      <style>
         table{
-            border:20px solid blue;
+            border:2px solid blue;
             border-collapse:collapse;
          }
 
-        td {
-        border: 3px solid blue
-         }
-
-         th{
-         border:3px solid blue;
+        thead, tbody, tr, td, th {
+        border: inherit
          }
 
         h1{
@@ -26,34 +22,19 @@
 
     </style>
     <script>
-        /*
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelector('#blue').onclick = function() {
-                document.querySelector('table').style.color = 'blue';
-                document.querySelector('table').style.border = 1px solid blue;
 
-             };
-            document.querySelector('#green').onclick = function() {
-                document.querySelector('table').style.color = 'green';
-                document.querySelector('table').style.border = 2px solid green;
-            };
-            document.querySelector('#red').onclick = function() {
-                document.querySelector('table').style.color = 'red';
-                document.querySelector('table').style.border = 3px solid red;
-            };
-        });
-        */
         document.addEventListener("DOMContentLoaded", function() {
             document.querySelectorAll('button').forEach(function(button) {
                 button.onclick = function() {
                     document.querySelector('table').style.color = button.dataset.color
                     document.querySelector('table').style.fontSize = button.dataset.size
-                    document.querySelector('table').style.border = button.dataset.border
+                    document.querySelector('table').style.borderColor = button.dataset.border
                 };
             });
 
             document.querySelector('select').onchange = function() {
-                document.querySelector('table').style.color = this.value;
+
+                document.querySelector('table').style.borderWidth = this.value;
             };
         });
 
@@ -61,14 +42,14 @@
 </head>
 <body>
 <h1>
-    <button data-color="blue" data-size="20px" id="blue" border="border:1px s">Blue</button>
-    <button data-color="green" data-size="20px" id="green" border="border:2px solid green">Green</button>
-    <button data-color="red" data-size="20px" id="red" border="border:3px solid red">Red</button>
+    <button data-color="blue" data-size="20px" id="blue" data-border="blue">Blue</button>
+    <button data-color="green" data-size="20px" id="green" data-border="green">Green</button>
+    <button data-color="red" data-size="20px" id="red" data-border="red">Red</button>
 
     <select>
-        <option value="blue">Blue</option>
-        <option value="green">Green</option>
-        <option value="red">Red</option>
+        <option value="1px">1px</option>
+        <option value="3px">3px</option>
+        <option value="5px">5px</option>
     </select>
 </h1>
 
@@ -96,4 +77,5 @@
     </table>
 
 </body>
+</html>
 </html>
